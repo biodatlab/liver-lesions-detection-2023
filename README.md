@@ -7,10 +7,14 @@ The solution leverages the [DINO architecture](https://arxiv.org/abs/2203.03605)
 three classes of liver lesions (cystic, fibrosis, solid) as well as normal liver images. Our solution achieved a mAP70 score of 0.5037 on the public
 leaderboard (using 25% of the test data) and 0.5263 on the private leaderboard (utilizing the entire test data).
 
+## Qualitative Results
+
+![Qualitative Results](qualitative_results.png)
+
 ## Our Observations
 
 - The Transformer backbone outperforms the convolutional backbone. We attribute this to the inherent noise present in ultrasound images. The Transformer's backbone is more adept at learning improved ultrasound image representations.
-- Incorporating all images during training is crucial. In the `mmdetection` dataloader configuration, the option `filter_cfg=dict(filter_empty_gt=False)` is utilized.  This allows the model to see more negative examples during training.
+- Incorporating all images during training is crucial. In the `mmdetection` dataloader configuration, the option `filter_cfg=dict(filter_empty_gt=False)` is utilized. This allows the model to see more negative examples during training.
 
 ## Training the Model
 
@@ -19,7 +23,7 @@ To train our solution using the provided `dino-5scale_swin-l_8xb2-12e_liver.py` 
 1. Follow the instructions to install `mmcv` from the official documentation: [mmcv Installation Guide](https://mmcv.readthedocs.io/en/latest/get_started/installation.html)
 2. Clone the `mmdetection` repository: 
    ```
-   git clone https://github.com/open-mmlab/mmdetection
+   git clone https://github.com/open-mmlab/mmdetection.git
    ```
 3. Download the COCO pretrained weights for SWIN-L from the provided link: [SWIN-L Pretrained Weights](https://github.com/open-mmlab/mmdetection/tree/main/configs/dino)
 4. Modify the paths in the provided config file `dino-5scale_swin-l_8xb2-12e_liver.py` to correspond to your dataset and pretrained weights location.
